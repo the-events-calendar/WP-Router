@@ -128,11 +128,12 @@ class WP_Router_Page extends WP_Router_Utility {
 	 * @param object $post
 	 * @return void
 	 */
-	public function set_post_contents( $post ) {
-		global $pages;
-		$pages = array($this->contents);
-		// TODO: add a facility for multi-page documents?
-	}
+    public function set_post_contents( $post ) {
+        if ( $post->post_type == WP_Router_Page::POST_TYPE ) {
+            global $pages;
+            $pages = array( $this->contents );
+        }
+    }
 
 	/**
 	 * Set the title for the placeholder page

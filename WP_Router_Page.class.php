@@ -122,12 +122,13 @@ class WP_Router_Page extends WP_Router_Utility {
 		}
 	}
 
-	/**
-	 * Override the global $pages array to yield our content
-	 *
-	 * @param object $post
-	 * @return void
-	 */
+    /**
+     * Override the global $pages array to yield our content
+     *
+     * @param object $post
+     *
+     * @return void
+     */
     public function set_post_contents( $post ) {
         if ( $post->post_type == WP_Router_Page::POST_TYPE ) {
             global $pages;

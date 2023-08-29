@@ -130,9 +130,9 @@ class WP_Router_Page extends WP_Router_Utility {
      * @return void
      */
     public function set_post_contents( $post ) {
-        if ( $post->post_type == WP_Router_Page::POST_TYPE ) {
+        if ( WP_Router_Page::POST_TYPE == $post->post_type ) {
             global $pages;
-            $pages = array( $this->contents );
+            $pages = [ $this->contents ];
         }
     }
 

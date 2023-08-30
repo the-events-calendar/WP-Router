@@ -142,6 +142,10 @@ Creating or changing routes should always occur in the context of the `wp_router
 
 == Changelog ==
 
+= TBD =
+
+* Fix - Added an additional check for `set_post_contents` so that it only runs on posts that are created via WP-Router. [CE-192]
+
 = 0.6 =
 
 * Make magic methods public to avoid fatal with PHP 7.3

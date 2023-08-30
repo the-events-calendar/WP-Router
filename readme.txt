@@ -144,7 +144,7 @@ Creating or changing routes should always occur in the context of the `wp_router
 
 = TBD =
 
-* Fix - Added an additional check for `set_post_contents` so that it only runs on posts that are created via WP-Router.
+* Fix - Added an additional check for `set_post_contents` so that it only runs on posts that are created via WP-Router. [CE-192]
 
 = 0.6 =
 

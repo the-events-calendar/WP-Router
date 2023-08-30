@@ -125,15 +125,16 @@ class WP_Router_Page extends WP_Router_Utility {
     /**
      * Override the global $pages array to yield our content
      *
-     * @param object $post
+     * @param WP_Post $post WordPress Post object.
      *
      * @return void
      */
     public function set_post_contents( $post ) {
-        if ( WP_Router_Page::POST_TYPE == $post->post_type ) {
-            global $pages;
-            $pages = [ $this->contents ];
+        if ( WP_Router_Page::POST_TYPE !== $post->post_type ) {
+            return;
         }
+        global $pages;
+        $pages = [ $this->contents ];
     }
 
 	/**

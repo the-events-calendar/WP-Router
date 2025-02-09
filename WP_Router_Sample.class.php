@@ -7,7 +7,7 @@
  
 class WP_Router_Sample {
 	public static function init() {
-		add_action('wp_router_generate_routes', array(get_class(), 'generate_routes'), 10, 1);
+		add_action('wp_router_generate_routes', array(get_called_class(), 'generate_routes'), 10, 1);
 	}
 
 	public static function generate_routes( WP_Router $router ) {

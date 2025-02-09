@@ -16,7 +16,7 @@ class WP_Router_Sample {
 			'query_vars' => array(
 				'sample_argument' => 1,
 			),
-			'page_callback' => array(get_class(), 'sample_callback'),
+			'page_callback' => array(get_called_class(), 'sample_callback'),
 			'page_arguments' => array('sample_argument'),
 			'access_callback' => TRUE,
 			'title' => 'WP Router Sample Page',

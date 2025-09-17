@@ -7,19 +7,19 @@
  
 class WP_Router_Sample {
 	public static function init() {
-		add_action('wp_router_generate_routes', array(get_class(), 'generate_routes'), 10, 1);
+		add_action( 'wp_router_generate_routes', array( __CLASS__, 'generate_routes' ), 10, 1 );
 	}
 
 	public static function generate_routes( WP_Router $router ) {
-		$router->add_route('wp-router-sample', array(
-			'path' => '^wp_router/(.*?)$',
-			'query_vars' => array(
+		$router->add_route( 'wp-router-sample', array(
+			'path'            => '^wp_router/(.*?)$',
+			'query_vars'      => array(
 				'sample_argument' => 1,
 			),
-			'page_callback' => array(get_class(), 'sample_callback'),
-			'page_arguments' => array('sample_argument'),
+			'page_callback'   => array( __CLASS__, 'sample_callback' ),
+			'page_arguments'  => array( 'sample_argument' ),
 			'access_callback' => TRUE,
-			'title' => 'WP Router Sample Page',
+			'title'           => 'WP Router Sample Page',
 		));
 	}
 

@@ -24,7 +24,7 @@ class WP_Router_Sample {
 	}
 
 	public static function sample_callback( $argument ) {
-		echo '<p>Welcome to the WP Router sample page. You can find the code that generates this page in '.__FILE__.'</p>';
-		echo '<p>This page helpfully tells you the value of the <code>sample_argument</code> query variable: '.esc_html($argument).'</p>';
+		echo '<p>Welcome to the WP Router sample page. You can find the code that generates this page in ' . __FILE__ . '</p>';
+		echo '<p>This page helpfully tells you the value of the <code>sample_argument</code> query variable: ' . esc_html($argument) . '</p>';
 	}
 }

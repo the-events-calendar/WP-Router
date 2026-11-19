@@ -5,6 +5,7 @@ class WP_Router_Page extends WP_Router_Utility {
 
 	protected static $rewrite_slug = 'WP_Router';
 	protected static $post_id = 0; // The ID of the post this plugin uses
+	protected static $making_post = FALSE; // Whether the placeholder post is being created
 
 	protected $contents = '';
 	protected $title = '';
@@ -48,7 +49,7 @@ class WP_Router_Page extends WP_Router_Utility {
 	 * @return int
 	 */
 	protected static function get_post_id() {
-		if ( !self::$post_id ) {
+		if ( !self::$post_id && !self::$making_post ) {
 			$posts = get_posts(array(
 				'post_type' => self::POST_TYPE,
 				'post_status' => 'publish',
@@ -57,7 +58,18 @@ class WP_Router_Page extends WP_Router_Utility {
 			if ( $posts ) {
 				self::$post_id = $posts[0]->ID;
 			} else {
-				self::$post_id = self::make_post();
+				/*
+				 * wp_insert_post() builds the new post's permalink before it clears the
+				 * query cache, and the post_type_link filter calls back in here. Without
+				 * the flag that nested call reads the cached empty result and creates
+				 * another post, over and over until PHP runs out of time or memory.
+				 */
+				self::$making_post = TRUE;
+				try {
+					self::$post_id = self::make_post();
+				} finally {
+					self::$making_post = FALSE;
+				}
 			}
 		}
 		return self::$post_id;

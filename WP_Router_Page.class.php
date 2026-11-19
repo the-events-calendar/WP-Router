@@ -65,11 +65,14 @@ class WP_Router_Page extends WP_Router_Utility {
 				 * another post, over and over until PHP runs out of time or memory.
 				 */
 				self::$making_post = TRUE;
+				/* No finally: the library still declares PHP 5.2, and finally needs 5.5. */
 				try {
 					self::$post_id = self::make_post();
-				} finally {
+				} catch ( Exception $e ) {
 					self::$making_post = FALSE;
+					throw $e;
 				}
+				self::$making_post = FALSE;
 			}
 		}
 		return self::$post_id;

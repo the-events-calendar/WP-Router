@@ -142,6 +142,10 @@ Creating or changing routes should always occur in the context of the `wp_router
 
 == Changelog ==
 
+= 0.6.3 =
+
+* Fix - Stopped the first request to a route on a new site from creating placeholder posts in a loop until PHP ran out of time or memory. [SMTNC-1074]
+
 = 0.6.2 =
 
 * Compatibility - Change `get_class()` because without arguments it is deprecated in PHP 8.0+ [CE-333]
